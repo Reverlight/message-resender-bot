@@ -14,7 +14,8 @@ bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Напишите сообщение, оно будет сразу отправлено админу")
+    chat_id = message.chat.id
+    bot.send_message(chat_id, "Напишите сообщение, оно будет сразу отправлено админу")
 
 
 bot.polling()
