@@ -14,15 +14,17 @@ bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def send_instructions(message):
+
     this_chat_id = message.chat.id
-    this_message_id = message.id
     print(this_chat_id)
     bot.send_message(this_chat_id, "Напишите сообщение, оно будет сразу отправлено админу")
 
 
 @bot.message_handler(func=lambda message: True)
 def forward_message(message):
-    bot.reply_to(message, message.text)
-
+    from_chat_id = message.chat.id
+    this_message_id = message.message_id
+    to_chat_id = ADMIN_CHAT_ID
+    bot.forward_message(to_chat_id, from_chat_id, this_message_id)
 
 bot.polling()
