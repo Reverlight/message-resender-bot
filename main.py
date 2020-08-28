@@ -7,9 +7,9 @@ import telebot
 load_dotenv()
 
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')  # Here is your's TELEGRAM BOT API TOKEN
-print(TELEGRAM_BOT_TOKEN)
 
-bot = telebot.TeleBot("TOKEN")
+
+bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
 
 
 @bot.message_handler(commands=['start'])
